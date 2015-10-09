@@ -1,0 +1,15 @@
+{
+  "name": "reviewbot-jscs",
+  "version": "0.1.0",
+  "description": "The jscs plugin for reviewbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Lobashev",
+  "license": "MIT",
+  "dependencies": {
+    "jscs": "2.3.0",
+    "jscs-jsdoc": "1.2.0"
+  }
+}
