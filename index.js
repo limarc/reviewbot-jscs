@@ -1,21 +1,25 @@
 var fs = require('fs'),
+    path = require('path'),
     jscs = require('jscs'),
     loadConfigFile = require('jscs/lib/cli-config');
 
-module.exports = function(extensions) {
-    if (!extensions || extensions.constructor !== Array) {
-        extensions = ['js', 'es6'];
+module.exports = function(config) {
+    if (typeof config !== 'object') {
+        config = {};
     }
 
-    var checker = new jscs({ esnext: true }),
-        config;
+    if (!Array.isArray(config.extensions)) {
+        config.extensions = ['.js'];
+    }
+
+    var checker = new jscs({ esnext: true });
 
     try {
-        config = loadConfigFile.load('./.jscsrc');
+        var jscsrc = loadConfigFile.load('./.jscsrc');
     } catch (e) {}
 
     checker.registerDefaultRules();
-    checker.configure(config || {});
+    checker.configure(jscsrc || {});
 
     return {
         type: 'jscs',
@@ -26,12 +30,12 @@ module.exports = function(extensions) {
             };
 
             files.forEach(function(filename) {
-                if (extensions.indexOf(filename.split('.').pop()) === -1) {
+                if (config.extensions.indexOf(path.extname(filename)) === -1) {
                     return;
                 }
 
                 try {
-                    var errors = checker.checkString(String(fs.readFileSync(filename)), filename),
+                    var errors = checker.checkString(fs.readFileSync(filename, 'utf8'), filename),
                         errorList = errors.getErrorList();
 
                     if (errorList.length) {
