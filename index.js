@@ -12,7 +12,7 @@ module.exports = function(config) {
         config.extensions = ['.js'];
     }
 
-    var checker = new jscs({ esnext: true });
+    var checker = new jscs({});
 
     try {
         var jscsrc = loadConfigFile.load('./.jscsrc');
