@@ -19,7 +19,6 @@ module.exports = function(config) {
     } catch (e) {}
 
     checker.registerDefaultRules();
-    checker.registerRule(require('jscs/lib/rules/validate-magic-number'));
     checker.configure(jscsrc || {});
 
     return {
