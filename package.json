@@ -1,6 +1,6 @@
 {
   "name": "reviewbot-jscs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "The jscs plugin for reviewbot",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "Alexander Lobashev",
   "license": "MIT",
   "dependencies": {
-    "jscs": "2.3.0",
+    "jscs": "2.5.0",
     "jscs-jsdoc": "1.2.0"
   }
 }

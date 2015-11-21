@@ -16,7 +16,9 @@ module.exports = function(config) {
 
     try {
         var jscsrc = loadConfigFile.load('./.jscsrc');
-    } catch (e) {}
+    } catch (e) {
+        console.log(e);
+    }
 
     checker.registerDefaultRules();
     checker.configure(jscsrc || {});
